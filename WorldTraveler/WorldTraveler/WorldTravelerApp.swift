@@ -11,7 +11,24 @@ import SwiftUI
 struct WorldTravelerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                ContentView()
+                    .tabItem {
+                        HStack {
+                            Image(systemName: "thermometer")
+                            Text("Conversion")
+                        }
+                    }
+                MapView()
+                    .tabItem {
+                        HStack {
+                            Image(systemName: "map")
+                            Text("Map")
+                        }
+                    }
+            }
+//            .accentColor(.purple)
         }
     }
 }
+
