@@ -12,19 +12,26 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            HStack {
-                Spacer()
-                Button(action: {
-                    gameStore.createGame()
-                }, label: {
-                    Text("Add")
-                }).buttonStyle(BorderlessButtonStyle())
-            }
             ForEach(gameStore.games) { (game) in
                 GameListItem(game: game)
             }
-            
-        }.animation(.easeIn, value: gameStore.games)
+        }.padding(EdgeInsets(top: 24, leading: 0, bottom: 0, trailing: 0))
+        .animation(.easeIn, value: gameStore.games)
+        .overlay(
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        gameStore.createGame()
+                    }, label: {
+                        Text("Add")
+                    }).buttonStyle(BorderlessButtonStyle())
+                }
+                .padding()
+                .background(Color.white.edgesIgnoringSafeArea(.top))
+                Spacer()
+            }
+        )
     }
 }
 
