@@ -17,4 +17,8 @@ class GameStore: ObservableObject {
         games.append(game)
         return game
     }
+    
+    func delete(at indexSet: IndexSet) {
+        games.remove(atOffsets: indexSet)
+    }
 }
