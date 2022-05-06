@@ -1,0 +1,17 @@
+/*
+  Localizable.strings
+  WorldTraveler
+
+  Created by Mehmet Sağır on 5.05.2022.
+  
+*/
+
+"CONVERSION_DEGRESS_CELCIUS" = "derece";
+"CONVERSION_FAHRENHEIT" = "fahrenheit";
+"CONVERSION_IS_ACTUALLY" = "aslında";
+"CONVERSION_TEXT_FIELD_PLACEHOLDER" = "değer";
+"MAP_CITY_ISTANBUL" = "İstanbul";
+"MAP_CITY_LONDON" = "Londra";
+"TAB_CONVERSION" = "Çevirici";
+"TAB_MAP" = "Harita";
+

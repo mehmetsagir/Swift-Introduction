@@ -16,18 +16,18 @@ struct WorldTravelerApp: App {
                     .tabItem {
                         HStack {
                             Image(systemName: "thermometer")
-                            Text("Conversion")
+                            Text("TAB_CONVERSION")
                         }
                     }
                 MapView()
                     .tabItem {
                         HStack {
                             Image(systemName: "map")
-                            Text("Map")
+                            Text("TAB_MAP")
                         }
                     }
             }
-//            .accentColor(.purple)
+            //            .accentColor(.purple)
         }
     }
 }
