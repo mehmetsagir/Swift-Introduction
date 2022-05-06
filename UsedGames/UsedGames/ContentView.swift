@@ -38,7 +38,7 @@ struct ContentView: View {
                         }).buttonStyle(BorderlessButtonStyle())
                     }
                     .padding()
-                    .background(Color.white.edgesIgnoringSafeArea(.top))
+                    .background(Color.barBackgroundColor.edgesIgnoringSafeArea(.top))
                     Spacer()
                 }
             ).actionSheet(item: $gameToDelete) { (game) -> ActionSheet in
@@ -63,25 +63,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct GameListItem: View {
-    var game: Game
-    var numberFormatter = Formatter.dollarFormatter
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4.0) {
-                Text(game.name)
-                    .font(.body)
-                Text(game.serialNumber)
-                    .font(.caption)
-                    .foregroundColor(Color(white: 0.65))
-            }
-            Spacer()
-            Text(NSNumber(value: game.priceInDollas), formatter: numberFormatter)
-                .font(.title2)
-                .foregroundColor(game.priceInDollas > 30 ? .blue : .gray)
-                .animation(nil)
-        }
-        .padding(.vertical, 4)
-    }
-}
