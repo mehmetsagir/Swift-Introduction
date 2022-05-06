@@ -13,35 +13,31 @@ struct ContentView: View {
     @State var gameToDelete: Game?
     
     var body: some View {
-        List {
-            ForEach(gameStore.games) { (game) in
-                GameListItem(game: game)
-            }
-            .onDelete(perform: { indexSet in
-                self.gameToDelete = gameStore.game(at: indexSet)
-            })
-            .onMove(perform: { indices,
-                newOffset in
-                gameStore.move(indices: indices, to: newOffset)
-            })
-        }.padding(EdgeInsets(top: 28, leading: 0, bottom: 0, trailing: 0))
-            .animation(.easeIn, value: gameStore.games)
-            .overlay(
-                VStack {
-                    HStack {
-                        EditButton()
-                        Spacer()
-                        Button(action: {
-                            gameStore.createGame()
-                        }, label: {
-                            Text("Add")
-                        }).buttonStyle(BorderlessButtonStyle())
-                    }
-                    .padding()
-                    .background(Color.barBackgroundColor.edgesIgnoringSafeArea(.top))
-                    Spacer()
+        NavigationView {
+            List {
+                ForEach(gameStore.games) { (game) in
+                    GameListItem(game: game)
                 }
-            ).actionSheet(item: $gameToDelete) { (game) -> ActionSheet in
+                .onDelete(perform: { indexSet in
+                    self.gameToDelete = gameStore.game(at: indexSet)
+                })
+                .onMove(perform: { indices,
+                    newOffset in
+                    gameStore.move(indices: indices, to: newOffset)
+                })
+            }
+            .listStyle(PlainListStyle())
+            .navigationTitle("Used Games")
+            .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: Button(action: {
+                    gameStore.createGame()
+                }, label: {
+                    Text("Add")
+                }))
+            .animation(.easeIn, value: gameStore.games)
+            .actionSheet(item: $gameToDelete) { (game) -> ActionSheet in
                 ActionSheet(
                     title: Text("Are you sure?"),
                     message: Text("You will delete \(game.name)"),
@@ -54,6 +50,8 @@ struct ContentView: View {
                         })
                     ])
             }
+        }
+        
     }
 }
 
