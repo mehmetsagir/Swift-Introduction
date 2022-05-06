@@ -18,6 +18,10 @@ struct ContentView: View {
             .onDelete(perform: { indexSet in
                 gameStore.delete(at: indexSet)
             })
+            .onMove(perform: { indices,
+                newOffset in
+                gameStore.move(indices: indices, to: newOffset)
+            })
         }.padding(EdgeInsets(top: 28, leading: 0, bottom: 0, trailing: 0))
         .animation(.easeIn, value: gameStore.games)
         .overlay(

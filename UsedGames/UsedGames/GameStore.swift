@@ -21,4 +21,7 @@ class GameStore: ObservableObject {
     func delete(at indexSet: IndexSet) {
         games.remove(atOffsets: indexSet)
     }
+    func move(indices: IndexSet, to newOffset: Int) {
+        games.move(fromOffsets: indices, toOffset: newOffset)
+    }
 }
