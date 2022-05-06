@@ -24,7 +24,7 @@ struct ContentView: View {
                 GameListItem(game: game)
             }
             
-        }
+        }.animation(.easeIn, value: gameStore.games)
     }
 }
 

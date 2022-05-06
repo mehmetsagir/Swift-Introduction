@@ -10,11 +10,7 @@ import Foundation
 class GameStore: ObservableObject {
     @Published var games: [Game] = []
     
-    init() {
-        for _ in 0..<5 {
-            createGame()
-        }
-    }
+    init() {}
     
     @discardableResult func createGame() -> Game {
         let game = Game(random: true)
