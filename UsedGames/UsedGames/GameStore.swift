@@ -7,8 +7,8 @@
 
 import Foundation
 
-class GameStore {
-    var games: [Game] = []
+class GameStore: ObservableObject {
+    @Published var games: [Game] = []
     
     init() {
         for _ in 0..<5 {
