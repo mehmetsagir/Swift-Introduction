@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DetailView: View {
     var game: Game
     
     @State var name: String = ""
     @State var price: Double = 0.0
+    
+    @State var shouldEnableSaveButton: Bool = false
+    
+    func validate() {
+        shouldEnableSaveButton = game.name != name || game.priceInDollas != price
+     }
     
     var body: some View {
         Form {
@@ -21,7 +28,11 @@ struct DetailView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                     TextField("Name", text: $name)
-                }.padding(.vertical, 4.0)
+                        .onReceive(Just(name), perform: { newValue in
+                            validate()
+                        })
+                }
+                .padding(.vertical, 4.0)
                 VStack(alignment: .leading, spacing: 6.0) {
                     Text("Price in Dollars")
                         .font(.caption)
@@ -30,14 +41,19 @@ struct DetailView: View {
                               value: $price,
                               formatter: Formatter.dollarFormatter
                     )
+                    .onReceive(Just(price), perform: { newValue in
+                        validate()
+                    })
                         .keyboardType(.decimalPad)
-                }.padding(.vertical, 4.0)
+                }
+                .padding(.vertical, 4.0)
             }
             Section {
                 Button(action: {}, label: {
                     Text("Save")
                         .frame(maxWidth: .infinity)
                 })
+                    .disabled(!shouldEnableSaveButton)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
