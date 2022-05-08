@@ -11,6 +11,8 @@ import Combine
 struct DetailView: View {
     var game: Game
     
+    var gameStore: GameStore
+    
     @State var name: String = ""
     @State var price: Double = 0.0
     
@@ -49,7 +51,10 @@ struct DetailView: View {
                 .padding(.vertical, 4.0)
             }
             Section {
-                Button(action: {}, label: {
+                Button(action: {
+                    let newGame = Game(name: name, priceInDollas: price, serialNumber: game.serialNumber)
+                    gameStore.update(game: game, newValue: newGame)
+                }, label: {
                     Text("Save")
                         .frame(maxWidth: .infinity)
                 })
@@ -62,7 +67,9 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = Game(random: true)
-        DetailView(game: game)
+        let gameStore = GameStore()
+        let game = gameStore.createGame()
+
+        DetailView(game: game, gameStore: gameStore)
     }
 }

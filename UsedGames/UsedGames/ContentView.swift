@@ -19,6 +19,7 @@ struct ContentView: View {
                     NavigationLink(
                         destination: DetailView(
                             game: game,
+                            gameStore: gameStore,
                             name: game.name,
                             price: game.priceInDollas
                         )

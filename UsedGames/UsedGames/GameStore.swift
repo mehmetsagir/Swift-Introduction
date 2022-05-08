@@ -40,4 +40,10 @@ class GameStore: ObservableObject {
         }
         return nil
     }
+    
+    func update(game: Game, newValue: Game) {
+        if let index = games.firstIndex(of: game) {
+            games[index] = newValue
+        }
+    }
 }
