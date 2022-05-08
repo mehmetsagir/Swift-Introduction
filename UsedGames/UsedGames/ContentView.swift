@@ -16,7 +16,15 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(gameStore.games) { (game) in
-                    GameListItem(game: game)
+                    NavigationLink(
+                        destination: DetailView(
+                            game: game,
+                            name: game.name,
+                            price: game.priceInDollas
+                        )
+                    ) {
+                        GameListItem(game: game)
+                    }
                 }
                 .onDelete(perform: { indexSet in
                     self.gameToDelete = gameStore.game(at: indexSet)
