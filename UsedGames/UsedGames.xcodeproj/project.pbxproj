@@ -11,6 +11,7 @@
 		377D28F528245A9400480D88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D28F428245A9400480D88 /* ContentView.swift */; };
 		377D28F728245A9500480D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 377D28F628245A9500480D88 /* Assets.xcassets */; };
 		377D28FA28245A9500480D88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 377D28F928245A9500480D88 /* Preview Assets.xcassets */; };
+		37828D112828122C0057ED56 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37828D102828122C0057ED56 /* PhotoPicker.swift */; };
 		3795C95C2825BBE300119C88 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3795C95B2825BBE300119C88 /* Game.swift */; };
 		3795C95F2825BEE100119C88 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3795C95E2825BEE100119C88 /* GameStore.swift */; };
 		3795C9612825C4C100119C88 /* UsedGames+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3795C9602825C4C100119C88 /* UsedGames+Formatter.swift */; };
@@ -26,6 +27,7 @@
 		377D28F428245A9400480D88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		377D28F628245A9500480D88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		377D28F928245A9500480D88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		37828D102828122C0057ED56 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		3795C95B2825BBE300119C88 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3795C95E2825BEE100119C88 /* GameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
 		3795C9602825C4C100119C88 /* UsedGames+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsedGames+Formatter.swift"; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				3795C9602825C4C100119C88 /* UsedGames+Formatter.swift */,
 				3795C95E2825BEE100119C88 /* GameStore.swift */,
 				3795C96A2825DCA300119C88 /* DetailView.swift */,
+				37828D102828122C0057ED56 /* PhotoPicker.swift */,
 				3795C9662825D65800119C88 /* GameListItem.swift */,
 				377D28F428245A9400480D88 /* ContentView.swift */,
 				3795C9622825D3EB00119C88 /* Colors.xcassets */,
@@ -161,6 +164,7 @@
 			files = (
 				377D28F528245A9400480D88 /* ContentView.swift in Sources */,
 				3795C96B2825DCA300119C88 /* DetailView.swift in Sources */,
+				37828D112828122C0057ED56 /* PhotoPicker.swift in Sources */,
 				3795C95F2825BEE100119C88 /* GameStore.swift in Sources */,
 				3795C9672825D65800119C88 /* GameListItem.swift in Sources */,
 				3795C9652825D50100119C88 /* Color+UsedGames.swift in Sources */,
@@ -300,6 +304,8 @@
 				DEVELOPMENT_TEAM = LS58TRK7UP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photo of your games.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs camera access to take photo of your games.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -329,6 +335,8 @@
 				DEVELOPMENT_TEAM = LS58TRK7UP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photo of your games.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs camera access to take photo of your games.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

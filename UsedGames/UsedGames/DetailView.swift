@@ -18,9 +18,44 @@ struct DetailView: View {
     
     @State var shouldEnableSaveButton: Bool = false
     
+    @State var isPhotoPickerPresenting = false
+    @State var isPhotoPickerActionSheetPresenting = false
+    
+    @State var selectedPhoto: UIImage?
+    
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    
     func validate() {
         shouldEnableSaveButton = game.name != name || game.priceInDollas != price
-     }
+    }
+    
+    func createActionSheet() -> ActionSheet {
+        var buttons: [ActionSheet.Button] = [
+            .cancel()
+        ]
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            buttons.append(.default(
+                Text("Camera"),
+                action:  {
+                    sourceType = .camera
+                    isPhotoPickerPresenting = true
+                }
+            ))
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable((.photoLibrary)) {
+            buttons.append(.default(
+                Text("Photo Library"),
+                action:  {
+                    sourceType = .photoLibrary
+                    isPhotoPickerPresenting = true
+                }
+            ))
+        }
+        
+        return ActionSheet(title: Text("Please select a source"), message: nil, buttons: buttons)
+    }
     
     var body: some View {
         Form {
@@ -50,6 +85,14 @@ struct DetailView: View {
                 }
                 .padding(.vertical, 4.0)
             }
+            if let selectedPhoto = selectedPhoto {
+                Section(header: Text("Image")) {
+                    Image(uiImage: selectedPhoto)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.vertical)
+                }
+            }
             Section {
                 Button(action: {
                     let newGame = Game(name: name, priceInDollas: price, serialNumber: game.serialNumber)
@@ -61,7 +104,26 @@ struct DetailView: View {
                     .disabled(!shouldEnableSaveButton)
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                Button(action: {
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        isPhotoPickerActionSheetPresenting = true
+                    } else {
+                        isPhotoPickerPresenting = true
+                    }
+                }, label: {
+                    Image(systemName: "camera")
+                })
+            }
+        }
+        .actionSheet(isPresented: $isPhotoPickerActionSheetPresenting, content: {
+            createActionSheet()
+        })
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $isPhotoPickerPresenting, content: {
+            PhotoPicker(sourceType: sourceType, selectedPhoto: $selectedPhoto)
+        })
     }
 }
 
