@@ -12,6 +12,7 @@ struct DetailView: View {
     var game: Game
     
     var gameStore: GameStore
+    var imageStore: ImageStore
     
     @State var name: String = ""
     @State var price: Double = 0.0
@@ -122,7 +123,12 @@ struct DetailView: View {
         })
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isPhotoPickerPresenting, content: {
-            PhotoPicker(sourceType: sourceType, selectedPhoto: $selectedPhoto)
+            PhotoPicker(
+                sourceType: sourceType,
+                imageStore: imageStore,
+                game: game,
+                selectedPhoto: $selectedPhoto
+            )
         })
     }
 }
@@ -130,8 +136,9 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         let gameStore = GameStore()
+        let imageStore = ImageStore()
         let game = gameStore.createGame()
 
-        DetailView(game: game, gameStore: gameStore)
+        DetailView(game: game, gameStore: gameStore, imageStore: imageStore)
     }
 }

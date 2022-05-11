@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370BF370282C76BD00D48B1F /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370BF36F282C76BD00D48B1F /* ImageStore.swift */; };
 		377D28F328245A9400480D88 /* UsedGamesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D28F228245A9400480D88 /* UsedGamesApp.swift */; };
 		377D28F528245A9400480D88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D28F428245A9400480D88 /* ContentView.swift */; };
 		377D28F728245A9500480D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 377D28F628245A9500480D88 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		370BF36F282C76BD00D48B1F /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		377D28EF28245A9400480D88 /* UsedGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsedGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		377D28F228245A9400480D88 /* UsedGamesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedGamesApp.swift; sourceTree = "<group>"; };
 		377D28F428245A9400480D88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				3795C95B2825BBE300119C88 /* Game.swift */,
 				377D28F628245A9500480D88 /* Assets.xcassets */,
 				377D28F828245A9500480D88 /* Preview Content */,
+				370BF36F282C76BD00D48B1F /* ImageStore.swift */,
 			);
 			path = UsedGames;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				377D28F528245A9400480D88 /* ContentView.swift in Sources */,
 				3795C96B2825DCA300119C88 /* DetailView.swift in Sources */,
 				37828D112828122C0057ED56 /* PhotoPicker.swift in Sources */,
+				370BF370282C76BD00D48B1F /* ImageStore.swift in Sources */,
 				3795C95F2825BEE100119C88 /* GameStore.swift in Sources */,
 				3795C9672825D65800119C88 /* GameListItem.swift in Sources */,
 				3795C9652825D50100119C88 /* Color+UsedGames.swift in Sources */,

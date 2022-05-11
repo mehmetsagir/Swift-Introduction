@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var gameStore = GameStore()
+    @ObservedObject var imageStore = ImageStore()
     
     @State var gameToDelete: Game?
     
@@ -20,8 +21,10 @@ struct ContentView: View {
                         destination: DetailView(
                             game: game,
                             gameStore: gameStore,
+                            imageStore: imageStore,
                             name: game.name,
-                            price: game.priceInDollas
+                            price: game.priceInDollas,
+                            selectedPhoto: imageStore.image(forKey: game.itemKey)
                         )
                     ) {
                         GameListItem(game: game)

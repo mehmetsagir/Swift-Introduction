@@ -10,6 +10,8 @@ import UIKit
 
 struct PhotoPicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    var imageStore: ImageStore
+    var game: Game
     
     @Binding var selectedPhoto: UIImage?
     
@@ -43,6 +45,8 @@ struct PhotoPicker: UIViewControllerRepresentable {
         ) {
             if let selectedPhoto = info[.editedImage] as? UIImage ?? info[.originalImage] as? UIImage {
                 photoPicker.selectedPhoto = selectedPhoto
+                photoPicker.imageStore.setImage(selectedPhoto, key: photoPicker.game.itemKey)
+                
                 UIImageWriteToSavedPhotosAlbum(selectedPhoto, self, #selector(image(_:error:contextInfo:)), nil)
             } else {
                 photoPicker.selectedPhoto = nil
