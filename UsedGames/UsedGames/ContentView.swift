@@ -31,7 +31,13 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: { indexSet in
+                    let gameToDelete = gameStore.game(at: indexSet)
+                    self.gameToDelete = gameToDelete
+                    if let gameToDelete = gameToDelete {
+                        self.imageStore.deleteImage(forkey: gameToDelete.itemKey)
+                    }
                     self.gameToDelete = gameStore.game(at: indexSet)
+                    
                 })
                 .onMove(perform: { indices,
                     newOffset in

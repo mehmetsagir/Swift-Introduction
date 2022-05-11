@@ -21,5 +21,6 @@ class ImageStore: ObservableObject {
     
     func deleteImage(forkey key:String) {
         return cache.removeObject(forKey: key as NSString)
+        objectWillChange.send()
     }
 }
