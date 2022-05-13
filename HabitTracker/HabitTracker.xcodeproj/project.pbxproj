@@ -15,6 +15,7 @@
 		3783BEE2282DF0E4000F0961 /* HabitTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3783BEE0282DF0E4000F0961 /* HabitTracker.xcdatamodeld */; };
 		3783BEEB282DF287000F0961 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783BEEA282DF287000F0961 /* Home.swift */; };
 		3783BEED282DF637000F0961 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783BEEC282DF637000F0961 /* HabitViewModel.swift */; };
+		3783BEEF282DF753000F0961 /* AddNewHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783BEEE282DF753000F0961 /* AddNewHabit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		3783BEE1282DF0E4000F0961 /* HabitTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTracker.xcdatamodel; sourceTree = "<group>"; };
 		3783BEEA282DF287000F0961 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		3783BEEC282DF637000F0961 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
+		3783BEEE282DF753000F0961 /* AddNewHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				3783BEEA282DF287000F0961 /* Home.swift */,
+				3783BEEE282DF753000F0961 /* AddNewHabit.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				3783BEDF282DF0E4000F0961 /* Persistence.swift in Sources */,
 				3783BEE2282DF0E4000F0961 /* HabitTracker.xcdatamodeld in Sources */,
 				3783BEEB282DF287000F0961 /* Home.swift in Sources */,
+				3783BEEF282DF753000F0961 /* AddNewHabit.swift in Sources */,
 				3783BEED282DF637000F0961 /* HabitViewModel.swift in Sources */,
 				3783BED8282DF0E3000F0961 /* ContentView.swift in Sources */,
 				3783BED6282DF0E3000F0961 /* HabitTrackerApp.swift in Sources */,

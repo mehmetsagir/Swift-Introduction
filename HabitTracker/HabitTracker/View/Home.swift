@@ -11,6 +11,8 @@ struct Home: View {
     @FetchRequest(entity: Habit.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Habit.dateAdded, ascending: false)], predicate: nil, animation: .easeInOut)
     var habits: FetchedResults<Habit>
     
+    @StateObject var habitModel: HabitViewModel = .init()
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("Habbits")
@@ -28,7 +30,7 @@ struct Home: View {
             ScrollView(habits.isEmpty ? .init() : .vertical, showsIndicators: false) {
                 VStack(spacing: 15) {
                     Button {
-                        
+                        habitModel.addNewHabit.toggle()
                     } label: {
                         Label {
                             Text("New Habbit")
@@ -40,6 +42,11 @@ struct Home: View {
                     }
                     .padding(.vertical)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .sheet(isPresented: $habitModel.addNewHabit) {
+                        
+                    } content: {
+                        
+                    }
                 }
             }
         }

@@ -13,7 +13,7 @@ class HabitViewModel: ObservableObject {
     
     @Published var title: String = ""
     @Published var habitColor: String = "Card-1"
-    @Published var weekDAys: [String] = []
+    @Published var weekDays: [String] = []
     @Published var isRemainderOn: Bool = false
     @Published var remainderText: String = ""
     @Published var remainderDate: Date = Date()
