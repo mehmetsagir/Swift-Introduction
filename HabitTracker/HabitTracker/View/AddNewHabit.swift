@@ -101,6 +101,11 @@ struct AddNewHabit: View {
                     .padding(.horizontal)
                     .padding(.vertical, 12)
                     .background(Color("TFBG").opacity(0.4), in: RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    .onTapGesture {
+                        withAnimation {
+                            habitModel.showTimePicker.toggle()
+                        }
+                    }
                     
                     TextField("Remainder Text", text: $habitModel.title)
                         .padding(.horizontal)
@@ -130,6 +135,29 @@ struct AddNewHabit: View {
                     Button("Done") {
                         
                     }.tint(.white)
+                }
+            }
+        }
+        .overlay {
+            if habitModel.showTimePicker {
+                ZStack {
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation {
+                                habitModel.showTimePicker.toggle()
+                            }
+                        }
+                    
+                    DatePicker.init("", selection: $habitModel.remainderDate, displayedComponents: [.hourAndMinute])
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color("TFBG"))
+                        }
+                        .padding()
                 }
             }
         }
