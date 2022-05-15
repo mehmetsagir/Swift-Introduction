@@ -19,5 +19,20 @@ class HabitViewModel: ObservableObject {
     @Published var remainderDate: Date = Date()
     
     @Published var showTimePicker: Bool = false
+   
+    
+    func addHabit(context: NSManagedObjectContext) -> Bool {
+        return false
+    }
+    
+    func resetData() {
+        title = ""
+        habitColor = "Card-1"
+        weekDays = []
+        isRemainderOn = false
+        remainderText = ""
+        remainderDate = Date()
+        showTimePicker = false
+    }
 }
 

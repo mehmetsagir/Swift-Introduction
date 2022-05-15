@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddNewHabit: View {
     @EnvironmentObject var habitModel: HabitViewModel
+    @Environment(\.self) var env
     
     var body: some View {
         NavigationView {
@@ -126,14 +127,16 @@ struct AddNewHabit: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        
+                        env.dismiss()
                     } label: {
                         Image(systemName: "xmark.circle")
                     }.tint(.white)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        
+                        if habitModel.addHabit(context: env.managedObjectContext) {
+                            env.dismiss()
+                        }
                     }.tint(.white)
                 }
             }

@@ -43,9 +43,11 @@ struct Home: View {
                     .padding(.vertical)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .sheet(isPresented: $habitModel.addNewHabit) {
+                        habitModel.resetData()
                         
                     } content: {
-                        
+                        AddNewHabit()
+                            .environmentObject(habitModel)
                     }
                 }
             }
