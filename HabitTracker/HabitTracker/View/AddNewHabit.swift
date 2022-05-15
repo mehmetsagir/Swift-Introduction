@@ -138,6 +138,8 @@ struct AddNewHabit: View {
                             env.dismiss()
                         }
                     }.tint(.white)
+                    .disabled(!habitModel.doneStatus())
+                    .opacity(habitModel.doneStatus() ? 1 : 0.6)
                 }
             }
         }
