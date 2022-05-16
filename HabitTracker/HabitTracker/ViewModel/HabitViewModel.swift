@@ -22,6 +22,22 @@ class HabitViewModel: ObservableObject {
    
     
     func addHabit(context: NSManagedObjectContext) -> Bool {
+        let habit = Habit(context: context)
+        habit.title = title
+        habit.color = habitColor
+        habit.weekDays = weekDays
+        habit.isRemainderOn = isRemainderOn
+        habit.remainderText = remainderText
+        habit.notificationDate = remainderDate
+        habit.notificationDs = []
+        
+        if isRemainderOn {
+            
+        } else {
+            if let _ = try? context.save() {
+                return true
+            }
+        }
         return false
     }
     
