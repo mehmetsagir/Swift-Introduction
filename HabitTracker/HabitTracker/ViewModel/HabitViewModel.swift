@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import UserNotifications
 
 class HabitViewModel: ObservableObject {
     @Published var addNewHabit: Bool = false
@@ -21,7 +22,7 @@ class HabitViewModel: ObservableObject {
     @Published var showTimePicker: Bool = false
    
     
-    func addHabit(context: NSManagedObjectContext) -> Bool {
+    func addHabit(context: NSManagedObjectContext) async -> Bool {
         let habit = Habit(context: context)
         habit.title = title
         habit.color = habitColor
@@ -32,13 +33,56 @@ class HabitViewModel: ObservableObject {
         habit.notificationDs = []
         
         if isRemainderOn {
-            
+            if let ids = try? await scheduleNotification() {
+                habit.notificationDs = ids
+                if let _ = try? context.save() {
+                    return true
+                }
+            }
         } else {
             if let _ = try? context.save() {
                 return true
             }
         }
         return false
+    }
+    
+    func scheduleNotification() async throws -> [String] {
+        let content = UNMutableNotificationContent()
+        content.title = "Habit Reminder"
+        content.subtitle = remainderText
+        content.sound = UNNotificationSound.default
+        
+        var notificationIDs: [String] = []
+        let calendar = Calendar.current
+        let weekDaySymbols: [String] = calendar.weekdaySymbols
+        
+        for weekDay in weekDays {
+            let id = UUID().uuidString
+            let hour = calendar.component(.hour, from: remainderDate)
+            let min = calendar.component(.minute, from: remainderDate)
+            let day = weekDaySymbols.firstIndex { currencyDay in
+                return currencyDay == weekDay
+            } ?? -1
+            
+            if day != -1 {
+                var components = DateComponents()
+                components.hour = hour
+                components.minute = min
+                components.day = day + 1
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+                
+                let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+                
+                try await UNUserNotificationCenter.current().add(request)
+                
+                notificationIDs.append(id)
+
+            }
+        }
+        
+        return notificationIDs
     }
     
     func resetData() {
