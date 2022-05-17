@@ -128,6 +128,11 @@ struct Home: View {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(Color("TFBG").opacity(0.5))
         }
+        .onTapGesture {
+            habitModel.editHabit = habit
+            habitModel.restoreEditData()
+            habitModel.addNewHabit.toggle()
+        }
     }
     
     func getDate(date: Date) -> String {

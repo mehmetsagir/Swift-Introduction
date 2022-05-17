@@ -20,6 +20,8 @@ class HabitViewModel: ObservableObject {
     @Published var remainderDate: Date = Date()
     
     @Published var showTimePicker: Bool = false
+    
+    @Published var editHabit: Habit?
    
     
     func addHabit(context: NSManagedObjectContext) async -> Bool {
@@ -93,6 +95,18 @@ class HabitViewModel: ObservableObject {
         remainderText = ""
         remainderDate = Date()
         showTimePicker = false
+        editHabit = nil
+    }
+    
+    func restoreEditData() {
+        if let editHabit = editHabit {
+            title = editHabit.title ?? ""
+            habitColor = editHabit.color ?? "Card-1"
+            weekDays = editHabit.weekDays ?? []
+            isRemainderOn = editHabit.isRemainderOn
+            remainderDate = editHabit.notificationDate ?? Date()
+            remainderText = editHabit.remainderText ?? ""
+        }
     }
     
     func doneStatus() -> Bool {
