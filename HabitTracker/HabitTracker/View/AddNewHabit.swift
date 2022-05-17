@@ -109,13 +109,13 @@ struct AddNewHabit: View {
                         }
                     }
                     
-                    TextField("Remainder Text", text: $habitModel.title)
+                    TextField("Remainder Text", text: $habitModel.remainderText)
                         .padding(.horizontal)
                         .padding(.vertical, 10)
                         .background(Color("TFBG").opacity(0.4), in: RoundedRectangle(cornerRadius: 6, style: .continuous))
                 }
                 .frame(height: habitModel.isRemainderOn ? nil : 0)
-                .opacity(habitModel.isRemainderOn ? 1 : 0)
+                .opacity(habitModel.isRemainderOn ? 1 : 0) 
                 .opacity(habitModel.notificationAccess ? 1 : 0)
                 
                 

@@ -84,15 +84,15 @@ class HabitViewModel: ObservableObject {
             let id = UUID().uuidString
             let hour = calendar.component(.hour, from: remainderDate)
             let min = calendar.component(.minute, from: remainderDate)
-            let day = weekDaySymbols.firstIndex { currencyDay in
-                return currencyDay == weekDay
+            let day = weekDaySymbols.firstIndex { currentDay in
+                return currentDay == weekDay
             } ?? -1
             
             if day != -1 {
                 var components = DateComponents()
                 components.hour = hour
                 components.minute = min
-                components.day = day + 1
+                components.weekday = day + 1
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
                 
@@ -122,6 +122,7 @@ class HabitViewModel: ObservableObject {
     func deleteHabit(context: NSManagedObjectContext) -> Bool {
         if let editHabit = editHabit {
             if editHabit.isRemainderOn {
+
                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: editHabit.notificationDs ?? [])
             }
             context.delete(editHabit)
