@@ -22,6 +22,20 @@ class HabitViewModel: ObservableObject {
     @Published var showTimePicker: Bool = false
     
     @Published var editHabit: Habit?
+    
+    @Published var notificationAccess: Bool = false
+    
+    init() {
+        requestNotificationAccess()
+    }
+    
+    func requestNotificationAccess() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert]) {status, _ in
+            DispatchQueue.main.async {
+                self.notificationAccess = status
+            }
+        }
+    }
    
     
     func addHabit(context: NSManagedObjectContext) async -> Bool {
@@ -106,7 +120,7 @@ class HabitViewModel: ObservableObject {
             }
         }
         
-        return false        
+        return false
     }
     
     func restoreEditData() {

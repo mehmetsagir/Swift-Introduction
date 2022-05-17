@@ -92,6 +92,7 @@ struct AddNewHabit: View {
                     Toggle(isOn: $habitModel.isRemainderOn) {}
                         .labelsHidden()
                 }
+                .opacity(habitModel.notificationAccess ? 1 : 0)
                 
                 HStack(spacing: 12) {
                     Label {
@@ -115,6 +116,7 @@ struct AddNewHabit: View {
                 }
                 .frame(height: habitModel.isRemainderOn ? nil : 0)
                 .opacity(habitModel.isRemainderOn ? 1 : 0)
+                .opacity(habitModel.notificationAccess ? 1 : 0)
                 
                 
                 
