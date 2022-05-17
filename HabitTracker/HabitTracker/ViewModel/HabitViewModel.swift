@@ -39,7 +39,14 @@ class HabitViewModel: ObservableObject {
    
     
     func addHabit(context: NSManagedObjectContext) async -> Bool {
-        let habit = Habit(context: context)
+        var habit: Habit!
+        if let editHabit = editHabit {
+             habit = editHabit
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: editHabit.notificationDs ?? [])
+        } else {
+            habit = Habit(context: context)
+        }
+        
         habit.title = title
         habit.color = habitColor
         habit.weekDays = weekDays
@@ -114,6 +121,9 @@ class HabitViewModel: ObservableObject {
     
     func deleteHabit(context: NSManagedObjectContext) -> Bool {
         if let editHabit = editHabit {
+            if editHabit.isRemainderOn {
+               UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: editHabit.notificationDs ?? [])
+            }
             context.delete(editHabit)
             if let _ = try? context.save() {
                 return true
